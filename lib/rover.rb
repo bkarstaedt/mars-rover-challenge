@@ -6,6 +6,8 @@ class Rover
     west: :north
   }.freeze
 
+  attr_reader :x, :y, :direction
+
   def initialize(start_vector)
     @x = start_vector[:x]
     @y = start_vector[:y]
@@ -42,8 +44,10 @@ class Rover
   def next_direction(current, rotation)
     if rotation == :rotate_right
       DIRECTIONS[current]
-    else
+    elsif rotation == :rotate_left
       DIRECTIONS.key(current)
+    else
+      raise "unknown rotation '#{rotation}'"
     end
   end
 end

@@ -1,6 +1,8 @@
 require 'importer'
 require 'spec_helper'
 
+# TODO: check for coordinates <= 0 and very big coordinates
+
 describe Importer do
 
   let(:importer) { Importer.new commands }
