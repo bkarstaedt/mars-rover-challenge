@@ -25,7 +25,7 @@ class Rover
     else
       @direction = next_direction(@direction, command)
     end
-    notify_observers(@x, @y)
+    notify_observers(@x, @y, @direction)
   end
 
   def to_s

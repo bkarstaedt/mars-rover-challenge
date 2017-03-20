@@ -10,7 +10,7 @@ class Zone
     @y_max = y_max
   end
 
-  def update(x_new, y_new)
+  def update(x_new, y_new, _direction = nil)
     check_rover_position x_new, y_new
   end
 

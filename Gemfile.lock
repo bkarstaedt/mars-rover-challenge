@@ -38,6 +38,7 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
     slop (3.6.0)
+    tty-cursor (0.4.0)
     unicode-display_width (1.1.3)
     unicode_utils (1.4.0)
 
@@ -50,6 +51,7 @@ DEPENDENCIES
   rspec
   rspec-mocks
   rubocop
+  tty-cursor
 
 BUNDLED WITH
    1.13.6
