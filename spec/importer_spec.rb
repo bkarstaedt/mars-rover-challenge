@@ -1,8 +1,6 @@
 require 'importer'
 require 'spec_helper'
 
-# TODO: check for coordinates <= 0 and very big coordinates
-
 describe Importer do
 
   let(:importer) { Importer.new commands }
@@ -32,7 +30,7 @@ describe Importer do
 
   context 'defect data set' do
 
-    context 'unusal lines' do
+    context 'unusal extra line' do
       let(:commands) do
         %(
           1 1
@@ -41,7 +39,20 @@ describe Importer do
           M
         )
       end
-      it 'imports a general data set' do
+      it 'raises an error' do
+        expect { Importer.new(commands) }.to raise_error(ArgumentError)
+      end
+    end
+
+    context 'irregular corrdinate' do
+      let(:commands) do
+        %(
+          0 1
+          3 2 S
+          M
+        )
+      end
+      it 'raises an error' do
         expect { Importer.new(commands) }.to raise_error(ArgumentError)
       end
     end
@@ -54,7 +65,7 @@ describe Importer do
           M
         )
       end
-      it 'imports a general data set' do
+      it 'raises an error' do
         expect { Importer.new(commands) }.to raise_error(ArgumentError)
       end
     end
@@ -67,7 +78,7 @@ describe Importer do
           MXM
         )
       end
-      it 'imports a general data set' do
+      it 'raises an errorr' do
         expect { Importer.new(commands) }.to raise_error(ArgumentError)
       end
     end

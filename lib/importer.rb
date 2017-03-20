@@ -1,4 +1,5 @@
 class Importer
+  MIN_COORD_VAL = 1
   VALID_LINE_NUMBER = 3
 
   REGEX_LINE1 = /\A\s*\d{1}\s+\d{1}\s*\Z/
@@ -38,7 +39,11 @@ class Importer
     unless line1.match REGEX_LINE1
       raise ArgumentError, "unusal line 1 syntax ('#{line1}') detected"
     end
-    line1.split.map(&:to_i)
+    x, y = line1.split.map(&:to_i)
+    if x < MIN_COORD_VAL || y < MIN_COORD_VAL
+      raise ArgumentError, 'unusal coordinate in line 1 detected'
+    end
+    [x, y]
   end
 
   def start_vector_to_hash(line2)
