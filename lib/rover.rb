@@ -3,7 +3,7 @@ require 'observer'
 class Rover
   include Observable
 
-  DIRECTIONS = {
+  DIRECTIONS_CIRCLE = {
     north: :east,
     east: :south,
     south: :west,
@@ -29,7 +29,7 @@ class Rover
   end
 
   def to_s
-    "#{@x} #{@y} #{@direction}" # TODO: rover should send back with '3 3 S'!
+    "#{@x} #{@y} #{Importer::DIRECTIONS.key(@direction)}"
   end
 
   private
@@ -49,9 +49,9 @@ class Rover
 
   def next_direction(current, rotation)
     if rotation == :rotate_right
-      DIRECTIONS[current]
+      DIRECTIONS_CIRCLE[current]
     elsif rotation == :rotate_left
-      DIRECTIONS.key(current)
+      DIRECTIONS_CIRCLE.key(current)
     else
       raise "unknown rotation '#{rotation}'"
     end
