@@ -1,4 +1,8 @@
+require 'observer'
+
 class Rover
+  include Observable
+
   DIRECTIONS = {
     north: :east,
     east: :south,
@@ -15,15 +19,17 @@ class Rover
   end
 
   def execute_command(command)
+    changed
     if command == :move
       @x, @y = next_coordinate(@x, @y, @direction)
     else
       @direction = next_direction(@direction, command)
     end
+    notify_observers(@x, @y)
   end
 
   def to_s
-    "x: #{@x}, y: #{@y}, direction: #{@direction}"
+    "#{@x} #{@y} #{@direction}" # TODO: rover should send back with '3 3 S'!
   end
 
   private

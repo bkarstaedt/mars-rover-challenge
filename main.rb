@@ -6,14 +6,18 @@ importer = Importer.new File.read(ARGV[0] || 'example.data')
 
 rover = Rover.new importer.start_vector
 
-puts rover
+zone = Zone.new importer.x_max, importer.y_max
+rover.add_observer(zone)
+
+puts "START: #{rover}"
 
 importer.commands.each do |command|
-  puts command
-  rover.execute_command(command)
-  puts rover
-  sleep 1
+  begin
+    rover.execute_command(command)
+  rescue ArgumentError => error
+    puts "ERROR: #{error.message}"
+    break
+  end
 end
 
-# TODO
-# zone = Zone.new importer.x_max, importer.y_max, rover
+puts "FINAL: #{rover}"
