@@ -9,17 +9,16 @@ class ZonePrinter
   ARROW_WEST  = '◀'.freeze
 
   def initialize(x_max, y_max)
+    @printed_once = false
     @x_max = x_max
     @y_max = y_max
-    @printed_once = false
     @cursor = TTY::Cursor
+    @zone_table = zone_table
   end
 
   def update(x_new, y_new, direction)
-    zone_str = zone_str()
-
-    print @cursor.up(zone_str.lines.length) if @printed_once
-    print zone_str + "\n"
+    print @cursor.up(@zone_table.lines.length) if @printed_once
+    print @zone_table + "\n"
     print_rover x_new, y_new, direction
 
     @printed_once = true
@@ -27,7 +26,7 @@ class ZonePrinter
 
   private
 
-  def zone_str
+  def zone_table
     rows = []
 
     first_row   = '┌' + (['─' * WIDTH] * @x_max).join('┬') + '┐'
@@ -48,11 +47,11 @@ class ZonePrinter
 
     print @cursor.save
     print @cursor.move x, y
-    print arrow direction
+    print rover direction
     print @cursor.restore
   end
 
-  def arrow direction
+  def rover direction
     {
       north: ARROW_NORTH,
       east: ARROW_EAST,
