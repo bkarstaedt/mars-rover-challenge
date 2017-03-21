@@ -56,4 +56,4 @@ This will use the `example.data` file as input by default. If you want to provid
 
     ./main.rb rover.data
 
-[[https://github.com/bkarstaedt/mars-rover-challenge/blob/master/screenshot.png|alt=Mars Rover Challenge Screenshot]]
+![Mars Rover Challenge Screenshot](https://github.com/bkarstaedt/mars-rover-challenge/blob/master/screenshot.png)
