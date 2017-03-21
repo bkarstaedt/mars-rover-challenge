@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require_relative 'lib/importer'
 require_relative 'lib/rover'
 require_relative 'lib/zone'
@@ -18,7 +20,7 @@ puts "START: #{rover}"
 importer.commands.each do |command|
   begin
     rover.execute_command(command)
-    sleep(1)
+    sleep(0.5)
   rescue ArgumentError => error
     puts "ERROR: #{error.message}"
     break
