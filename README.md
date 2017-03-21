@@ -1,4 +1,4 @@
-# Mars rover challenge
+# Mars Rover Challenge [![Build Status](https://travis-ci.org/bkarstaedt/mars-rover-challenge.svg?branch=master)](https://travis-ci.org/bkarstaedt/mars-rover-challenge)
 
 Rovers have been sent to Mars to survey the terrain and you have been charged with creating their navigation system. These are the specifications you have been given:
 
@@ -25,9 +25,31 @@ You are to design a program which takes a text file in the format as described a
 - A README with clear instructions on how to use your program. Also include a brief description of the design decisions made in your program as well as how you have ensured your code’s correctness.
 - The input to your program (as described above) as well as any additional inputs.
 
-# first Ideas
+# Design Decisions
 
-- Import the HQ commands via an `Importer` class
-- Model the cartesian grid via a `Zone` class
-- Model the rover via a `Rover` class
-- Nice to have: visualization of the zone and rover moving around
+- for high cohesion slice the requirements into functional packages
+  - import the HQ commands via an `Importer` class
+  - model the cartesian grid via a `Zone` class
+  - model the rover via a `Rover` class
+- for loose coupling between classes make use of observer pattern
+  - publish information about the rover's status to all subscribers
+- miscellaneous
+  - keep methods small
+  - use expressive naming for methods and variables
+  - fail early
+  - make it run, make it right, make it fast
+  - avoid "magic numbers" - give them a name
+  - try to keep it understandable
+  - separate visualization from business logic
+
+# Usage
+
+First run the mandatory `bundle install` in the root directory.
+
+To run the rover app:
+
+    ./main.rb
+
+This will use the `example.data` file as input by default. If you want to provide your own file add it as the first argument:
+
+    ./main.rb rover.data
