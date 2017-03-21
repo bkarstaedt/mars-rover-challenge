@@ -8,7 +8,9 @@ Rovers have been sent to Mars to survey the terrain and you have been charged wi
     - M - Move one space forward in the direction it is facing
     - R - rotate 90 degrees to the right
     - L - rotate 90 degrees to the left
-- Due to the transmission delay in communicating with the rover on Mars, you are only able to send the rover a list of commands. These commands will be executed by the rover and its resulting location sent back to HQ. This is an example of the list of commands sent to the rover:
+- Due to the transmission delay in communicating with the rover on Mars, you are only able to send the rover a list of commands. These commands will be executed by the rover and its resulting location sent back to HQ.
+
+This is an example of the list of commands sent to the rover:
 
     8 8
     1 2 E
@@ -53,3 +55,5 @@ To run the rover app:
 This will use the `example.data` file as input by default. If you want to provide your own file add it as the first argument:
 
     ./main.rb rover.data
+
+[[https://github.com/bkarstaedt/mars-rover-challenge/blob/master/screenshot.png|alt=Mars Rover Challenge Screenshot]]
